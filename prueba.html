@@ -79,7 +79,7 @@ h2{font-size:15px;margin:16px 0 6px;color:var(--navy)}
   </ol>
   <h2>Cómo leer los indicadores</h2>
   <ul style="padding-left:18px;margin:0">
-   <li><b>Carga:</b> trabajo que pide la ruta contra la jornada. 🟢 hasta 100% · 🟡 hasta 130% · 🔴 más: no entra.</li>
+   <li><b>Carga horaria:</b> horas de trabajo que pide la ruta contra la jornada (no es la carga del camión). 🟢 hasta 100% · 🟡 hasta 130% · 🔴 más: no entra.</li>
    <li><b>Jornadas que pide la ruta:</b> cuántos vendedores de jornada completa harían falta para la ruta de hoy.</li>
    <li><b>Ruta atendida (GPS):</b> de las veces que el cliente estaba en la ruta, cuántas tuvo visita real (parada de 3 min o más) o pedido. Solo en Gescom.</li>
    <li><b>Pedidos contra antes:</b> pedidos de noviembre contra agosto, antes de la reestructuración. Solo en Gescom.</li>
@@ -140,7 +140,7 @@ h2{font-size:15px;margin:16px 0 6px;color:var(--navy)}
     <div class="note">En 0 calcula los vendedores necesarios.</div>
     <div class="note" style="margin:10px 0 2px;font-weight:600;color:#1E2761">Niveladores: qué tienen que tener parejo las zonas</div>
     <table class="grid">
-      <tr><td>Carga de trabajo (minutos)</td><td><select id="nivCarga" class="niv"><option value="0">No</option><option value="1">Poco</option><option value="2">Medio</option><option value="3" selected>Mucho</option></select></td></tr>
+      <tr><td>Carga horaria (minutos)</td><td><select id="nivCarga" class="niv"><option value="0">No</option><option value="1">Poco</option><option value="2">Medio</option><option value="3" selected>Mucho</option></select></td></tr>
       <tr><td>Facturación</td><td><select id="nivFact" class="niv"><option value="0" selected>No</option><option value="1">Poco</option><option value="2">Medio</option><option value="3">Mucho</option></select></td></tr>
       <tr><td>Autoservicios</td><td><select id="nivAuto" class="niv"><option value="0" selected>No</option><option value="1">Poco</option><option value="2">Medio</option><option value="3">Mucho</option></select></td></tr>
       <tr><td>Cantidad de clientes</td><td><select id="nivCli" class="niv"><option value="0" selected>No</option><option value="1">Poco</option><option value="2">Medio</option><option value="3">Mucho</option></select></td></tr>
@@ -376,7 +376,7 @@ function kmeans(items, k, iters = 15, crit = null) {
       const x = items[n]; let bj = 0, bd = 1e18;
       for (let j = 0; j < k; j++) {
         let pen = 0; for (let i = 0; i < crit.length; i++) pen += crit[i].p * Math.max(0, load[j][i] / target[i] - 1);
-        const d = km(x, cent[j]) * (1 + lam * pen / P * 4); if (d < bd) { bd = d; bj = j; }
+        const d = km(x, cent[j]) * (1 + lam * pen * 2); if (d < bd) { bd = d; bj = j; }
       }
       for (let i = 0; i < crit.length; i++) load[bj][i] += val[n][i]; groups[bj].push(x);
     }
@@ -573,7 +573,7 @@ function calcular() {
   const cargaHoy = base.reduce((s, f) => s + f.tot, 0) / base.length / p.jornada;
   const cls = (v, a, b, inv) => inv ? (v >= a ? 'ok' : v >= b ? 'warn' : 'bad') : (v <= a ? 'ok' : v <= b ? 'warn' : 'bad');
   const k = [['', fmt(sel.length), 'clientes en el área'], ['', fmt(sel.reduce((s, c) => s + vpw(c), 0)), 'visitas por semana que pide la ruta'],
-    [cls(cargaHoy, 1, 1.3), fmt(cargaHoy * 100) + '%', `carga promedio de los vendedores${princ.length ? ' con 40 o más clientes en el área' : ''} (jornada de ${p.jornada} min)`],
+    [cls(cargaHoy, 1, 1.3), fmt(cargaHoy * 100) + '%', `carga horaria promedio de los vendedores${princ.length ? ' con 40 o más clientes en el área' : ''} (jornada de ${p.jornada} min)`],
     ['', fmt(jornadasHoy, 1), 'jornadas completas por día que pide la ruta de hoy']];
   if (plan) k.push([cls(aten / plan, .8, .6, true), fmt(aten / plan * 100) + '%', 'de la ruta atendida en la realidad (GPS o pedido)']);
   if (pa) k.push([cls(pn / pa, .95, .85, true), (pn / pa >= 1 ? '+' : '') + fmt((pn / pa - 1) * 100) + '%', `pedidos de ${META.despues} contra ${META.antes}`]);
@@ -590,12 +590,12 @@ function calcular() {
   const TH = (t, tip) => `<th title="${tip}">${t}</th>`;
   $('tHoy').innerHTML = '<tr>' + TH('Vendedor', '') + TH('Equipo', '') + TH('Clientes', 'Clientes de la ruta en el área elegida') + TH('Visitas por día', 'Visitas que pide la ruta por día (semanal 1, doble 2, quincenal ½, mensual ¼)') +
     TH('Min. gestión', 'Minutos de atención en los clientes del día (nivel de servicio por canal)') + TH('Min. traslado', 'Minutos caminando (o en el vehículo del equipo) entre clientes del día') + TH('Min. por día', 'Gestión + traslado') +
-    TH('Horas de trabajo', 'Gestión + traslado en horas, para comparar con la jornada') + TH('Carga', 'Minutos por día ÷ minutos de la jornada. 100% = la ruta entra justo; 140% = pide 7 horas en una jornada de 5') +
+    TH('Horas de trabajo', 'Gestión + traslado en horas, para comparar con la jornada') + TH('Carga horaria', 'Horas de trabajo que pide la ruta ÷ horas de la jornada. 100% = entra justo; 140% = pide 7 horas en una jornada de 5. No es la carga del camión.') +
     (plan ? TH('Ruta atendida', 'De las veces que el cliente estaba en la ruta, en cuántas hubo visita GPS de 3 min o más o pedido') : '') + (pa ? TH(`Pedidos ${META.despues} / ${META.antes}`, 'Días con pedido de noviembre contra agosto') : '') +
     (hayRech ? TH('Rechazos', 'Mercadería rechazada en la entrega (DEV-RE) sobre lo facturado. Pasá el mouse para ver el motivo: cliente, preventa o logística') : '') + (hayVenta ? TH('Venta neta por mes', 'Facturado menos rechazos y devoluciones (lo no entregado no suma)') : '') + '</tr>' +
     filasHoy.map(f => `<tr><td>${f.v}</td><td>${f.eq}</td><td>${f.n}</td><td>${fmt(f.vis, 1)}</td><td>${fmt(f.ges)}</td><td>${fmt(f.tras)}</td><td>${fmt(f.tot)}</td><td><b>${hh(f.tot)}</b></td><td>${pill(f.carga, 1, 1.3)}</td>${plan ? `<td>${f.aten == null ? '–' : pill(f.aten, .8, .6, true)}</td>` : ''}${pa ? `<td>${f.ped == null ? '–' : pill(f.ped, .95, .85, true)}</td>` : ''}${hayRech ? tdRech(porV[f.v]) : ''}${hayVenta ? `<td>${money(f.venta)}</td>` : ''}</tr>`).join('') +
-    `<tr><td colspan="13" class="note" style="text-align:left"><b>Carga</b> = minutos que pide la ruta por día (gestión + traslado) ÷ jornada de ${p.jornada} min (${hh(p.jornada)}). Más de 100% = no entra en la jornada. <b>Venta neta</b> = facturado menos rechazos y devoluciones: lo no entregado no suma. Un vendedor puede tener clientes fuera del área elegida: acá se mide solo la parte de su ruta que cae en el área.</td></tr>`;
-  $('tProp').innerHTML = `<tr><th>Zona</th><th>Clientes</th><th>Autoservicios</th><th>Visitas por día</th><th>Min. gestión</th><th>Min. traslado</th><th>Min. por día</th><th>Horas de trabajo</th><th>Carga</th>${hayRech ? '<th>Rechazos</th>' : ''}${hayVenta ? '<th>Venta neta por mes</th>' : ''}</tr>` +
+    `<tr><td colspan="13" class="note" style="text-align:left"><b>Carga horaria</b> (no es la carga del camión) = minutos que pide la ruta por día (gestión + traslado) ÷ jornada de ${p.jornada} min (${hh(p.jornada)}). Más de 100% = no entra en la jornada. <b>Venta neta</b> = facturado menos rechazos y devoluciones: lo no entregado no suma. Un vendedor puede tener clientes fuera del área elegida: acá se mide solo la parte de su ruta que cae en el área.</td></tr>`;
+  $('tProp').innerHTML = `<tr><th>Zona</th><th>Clientes</th><th>Autoservicios</th><th>Visitas por día</th><th>Min. gestión</th><th>Min. traslado</th><th>Min. por día</th><th>Horas de trabajo</th><th>Carga horaria</th>${hayRech ? '<th>Rechazos</th>' : ''}${hayVenta ? '<th>Venta neta por mes</th>' : ''}</tr>` +
     res.zs.map((z, i) => { const d = res.dz[i]; const a = key => d.reduce((s, x) => s + x[key], 0) / d.length; return `<tr><td><i class="dot" style="background:${PAL[i % PAL.length]}"></i>Zona ${i + 1}</td><td>${z.length}</td><td>${z.filter(esAuto).length}</td><td>${fmt(a('vis'), 1)}</td><td>${fmt(a('ges'))}</td><td>${fmt(a('tras'))}</td><td>${fmt(a('tot'))}</td><td><b>${hh(a('tot'))}</b></td><td>${pill(a('tot') / p.jornada, 1, 1.3)}</td>${hayRech ? tdRech(z) : ''}${hayVenta ? `<td>${money(z.reduce((s, c) => s + (c.venta_mes || 0), 0))}</td>` : ''}</tr>`; }).join('') +
     (() => { // qué tan parejas quedaron las zonas: diferencia entre la mayor y la menor contra el promedio
       const rango = arr => { const m = arr.reduce((s, x) => s + x, 0) / arr.length; return m ? (Math.max(...arr) - Math.min(...arr)) / m : 0; };
@@ -678,9 +678,9 @@ function renderEsc() {
     ['Minutos de gestión por día', e => fmt(e.r.ges) + dif(e.r.ges, b.ges)],
     ['Minutos de traslado por día', e => fmt(e.r.tras) + dif(e.r.tras, b.tras)],
     ['Minutos por día (propuesta)', e => `${fmt(e.r.prom)} de ${e.r.jornada}` + dif(e.r.prom, b.prom)],
-    ['Carga de la propuesta', e => `<span class="pill p-${cls(e.r.prom / e.r.jornada, 1, 1.3)}">${fmt(e.r.prom / e.r.jornada * 100)}%</span>`],
+    ['Carga horaria de la propuesta', e => `<span class="pill p-${cls(e.r.prom / e.r.jornada, 1, 1.3)}">${fmt(e.r.prom / e.r.jornada * 100)}%</span>`],
     ['Días que se pasan de la jornada', e => fmt(e.r.exc * 100) + '%' + dif(e.r.exc, b.exc, 0, true)],
-    ['Carga de la ruta de hoy', e => `<span class="pill p-${cls(e.r.cargaHoy, 1, 1.3)}">${fmt(e.r.cargaHoy * 100)}%</span>`]];
+    ['Carga horaria de la ruta de hoy', e => `<span class="pill p-${cls(e.r.cargaHoy, 1, 1.3)}">${fmt(e.r.cargaHoy * 100)}%</span>`]];
   if (ESC.some(e => e.r.aten != null)) filas.push(['Ruta atendida hoy (GPS)', e => e.r.aten == null ? '–' : fmt(e.r.aten * 100) + '%']);
   if (ESC.some(e => e.r.venta != null)) filas.push(['Venta por mes del área', e => e.r.venta == null ? '–' : money(e.r.venta)]);
   filas.push(['', (e, i) => `<button class="mini sec" onclick="aplicarEsc(${i})">Aplicar</button><button class="mini sec" onclick="ESC.splice(${i},1);renderEsc()">Borrar</button>`]);
