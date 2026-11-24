@@ -43,10 +43,47 @@ table.t{width:100%;border-collapse:collapse;font-size:13px}.t th,.t td{padding:7
 .note{font-size:12px;color:var(--mut);line-height:1.45}.msg{font-size:12px;margin-top:6px}
 h2{font-size:15px;margin:16px 0 6px;color:var(--navy)}
 .leaflet-popup-content{font-size:13px;line-height:1.45}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
-<header><div class="logo" style="display:flex;align-items:center;gap:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="38" height="38"> <title>Sistema de Rutas 3.0</title> <defs> <radialGradient id="bg" cx="35%" cy="30%" r="85%"> <stop offset="0" stop-color="#1b3a7a"/><stop offset=".55" stop-color="#0f1f4d"/><stop offset="1" stop-color="#070f2b"/> </radialGradient> <linearGradient id="ruta" x1="0" y1="1" x2="1" y2="0"> <stop offset="0" stop-color="#9ff5c8"/><stop offset=".5" stop-color="#7fe7ff"/><stop offset="1" stop-color="#ffffff"/> </linearGradient> <linearGradient id="vidrio" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#bfefff" stop-opacity=".38"/><stop offset="1" stop-color="#7fe7ff" stop-opacity=".10"/> </linearGradient> <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"> <feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge> </filter> <filter id="glowSoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter> <clipPath id="marco"><rect x="4" y="4" width="120" height="120" rx="26"/></clipPath> <g id="tienda"> <rect x="0" y="7" width="20" height="13" rx="2" fill="url(#vidrio)" stroke="#bfefff" stroke-width="1.2"/> <path d="M-1.5 7h23l-2.3-6h-18.4z" fill="url(#vidrio)" stroke="#bfefff" stroke-width="1.2" stroke-linejoin="round"/> <path d="M3.4 1.2l-1 5.8M8 1.2v5.8M12.6 1.2v5.8M17.2 1.2l1 5.8" stroke="#bfefff" stroke-width=".9" stroke-opacity=".8"/> <rect x="3.2" y="11.5" width="5" height="8.5" rx=".6" fill="none" stroke="#bfefff" stroke-width="1"/> <rect x="11" y="11" width="6" height="4.2" rx=".6" fill="#bfefff" fill-opacity=".35" stroke="#bfefff" stroke-width=".9"/> </g> <g id="pin"> <path d="M0 -9a5.4 5.4 0 0 1 5.4 5.4c0 3.9-5.4 9.6-5.4 9.6s-5.4-5.7-5.4-9.6A5.4 5.4 0 0 1 0 -9z" fill="none" stroke="#9ff5c8" stroke-width="1.6"/> <circle cx="0" cy="-3.6" r="1.8" fill="#9ff5c8"/> </g> </defs> <g clip-path="url(#marco)"> <rect x="4" y="4" width="120" height="120" fill="url(#bg)"/> <g stroke="#5f8bd6" stroke-opacity=".14" stroke-width="1"><path d="M4 34H124M4 64H124M4 94H124M34 4V124M64 4V124M94 4V124"/></g> <path d="M20 106 C 52 106, 88 98, 86 82 S 30 74, 34 58 S 90 50, 98 28" fill="none" stroke="url(#ruta)" stroke-width="7" opacity=".35" filter="url(#glowSoft)"/> <path d="M20 106 C 52 106, 88 98, 86 82 S 30 74, 34 58 S 90 50, 98 28" fill="none" stroke="url(#ruta)" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/> <g filter="url(#glow)"> <use href="#tienda" x="72" y="61"/><use href="#pin" x="82" y="60"/> <use href="#tienda" x="20" y="40"/><use href="#pin" x="30" y="39"/> <use href="#tienda" x="54" y="34"/><use href="#pin" x="64" y="33"/> </g> <circle cx="20" cy="106" r="9" fill="#9ff5c8" opacity=".35" filter="url(#glowSoft)"/> <circle cx="20" cy="106" r="4.6" fill="#16a34a" stroke="#ffffff" stroke-width="2"/> <g fill="#ffffff" transform="translate(9 78)"> <circle cx="6" cy="2.6" r="2.6"/> <path d="M4.5 6h3.4l2.4 5.2 3.2 1.4-.9 1.8-4-1.6-1.2-2.4-1 4.2 2.8 3.4-.3 5.4h-2.2l.2-4.4-3.2-3.2-1.6 3.6-4.2 1.2-.6-2 3.4-1.1z"/> </g> <circle cx="98" cy="28" r="16" fill="#7fe7ff" opacity=".35" filter="url(#glowSoft)"/> <circle cx="98" cy="28" r="12" fill="#0f1f4d" fill-opacity=".6" stroke="#9ff5c8" stroke-width="2.4" filter="url(#glow)"/> <circle cx="98" cy="28" r="6.8" fill="none" stroke="#ffffff" stroke-width="2"/> <circle cx="98" cy="28" r="2.6" fill="#9ff5c8"/> <path d="M98 28l12-12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/> <path d="M110 16l-.6 4.4M110 16l-4.4.6" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/> </g> <rect x="4" y="4" width="120" height="120" rx="26" fill="none" stroke="#7fe7ff" stroke-opacity=".55" stroke-width="1.5"/> <text x="112" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="end">3.0</text> </svg><span>SISTEMA DE RUTAS <b>3.0</b></span></div><div class="sub" id="periodo"></div><div class="fuente" id="fuenteTag"></div></header>
+<header><div class="logo" style="display:flex;align-items:center;gap:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="38" height="38"> <title>Sistema de Rutas 3.0</title> <defs> <radialGradient id="bg" cx="35%" cy="30%" r="85%"> <stop offset="0" stop-color="#1b3a7a"/><stop offset=".55" stop-color="#0f1f4d"/><stop offset="1" stop-color="#070f2b"/> </radialGradient> <linearGradient id="ruta" x1="0" y1="1" x2="1" y2="0"> <stop offset="0" stop-color="#9ff5c8"/><stop offset=".5" stop-color="#7fe7ff"/><stop offset="1" stop-color="#ffffff"/> </linearGradient> <linearGradient id="vidrio" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#bfefff" stop-opacity=".38"/><stop offset="1" stop-color="#7fe7ff" stop-opacity=".10"/> </linearGradient> <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"> <feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge> </filter> <filter id="glowSoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter> <clipPath id="marco"><rect x="4" y="4" width="120" height="120" rx="26"/></clipPath> <g id="tienda"> <rect x="0" y="7" width="20" height="13" rx="2" fill="url(#vidrio)" stroke="#bfefff" stroke-width="1.2"/> <path d="M-1.5 7h23l-2.3-6h-18.4z" fill="url(#vidrio)" stroke="#bfefff" stroke-width="1.2" stroke-linejoin="round"/> <path d="M3.4 1.2l-1 5.8M8 1.2v5.8M12.6 1.2v5.8M17.2 1.2l1 5.8" stroke="#bfefff" stroke-width=".9" stroke-opacity=".8"/> <rect x="3.2" y="11.5" width="5" height="8.5" rx=".6" fill="none" stroke="#bfefff" stroke-width="1"/> <rect x="11" y="11" width="6" height="4.2" rx=".6" fill="#bfefff" fill-opacity=".35" stroke="#bfefff" stroke-width=".9"/> </g> <g id="pin"> <path d="M0 -9a5.4 5.4 0 0 1 5.4 5.4c0 3.9-5.4 9.6-5.4 9.6s-5.4-5.7-5.4-9.6A5.4 5.4 0 0 1 0 -9z" fill="none" stroke="#9ff5c8" stroke-width="1.6"/> <circle cx="0" cy="-3.6" r="1.8" fill="#9ff5c8"/> </g> </defs> <g clip-path="url(#marco)"> <rect x="4" y="4" width="120" height="120" fill="url(#bg)"/> <g stroke="#5f8bd6" stroke-opacity=".14" stroke-width="1"><path d="M4 34H124M4 64H124M4 94H124M34 4V124M64 4V124M94 4V124"/></g> <path d="M20 106 C 52 106, 88 98, 86 82 S 30 74, 34 58 S 90 50, 98 28" fill="none" stroke="url(#ruta)" stroke-width="7" opacity=".35" filter="url(#glowSoft)"/> <path d="M20 106 C 52 106, 88 98, 86 82 S 30 74, 34 58 S 90 50, 98 28" fill="none" stroke="url(#ruta)" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/> <g filter="url(#glow)"> <use href="#tienda" x="72" y="61"/><use href="#pin" x="82" y="60"/> <use href="#tienda" x="20" y="40"/><use href="#pin" x="30" y="39"/> <use href="#tienda" x="54" y="34"/><use href="#pin" x="64" y="33"/> </g> <circle cx="20" cy="106" r="9" fill="#9ff5c8" opacity=".35" filter="url(#glowSoft)"/> <circle cx="20" cy="106" r="4.6" fill="#16a34a" stroke="#ffffff" stroke-width="2"/> <g fill="#ffffff" transform="translate(9 78)"> <circle cx="6" cy="2.6" r="2.6"/> <path d="M4.5 6h3.4l2.4 5.2 3.2 1.4-.9 1.8-4-1.6-1.2-2.4-1 4.2 2.8 3.4-.3 5.4h-2.2l.2-4.4-3.2-3.2-1.6 3.6-4.2 1.2-.6-2 3.4-1.1z"/> </g> <circle cx="98" cy="28" r="16" fill="#7fe7ff" opacity=".35" filter="url(#glowSoft)"/> <circle cx="98" cy="28" r="12" fill="#0f1f4d" fill-opacity=".6" stroke="#9ff5c8" stroke-width="2.4" filter="url(#glow)"/> <circle cx="98" cy="28" r="6.8" fill="none" stroke="#ffffff" stroke-width="2"/> <circle cx="98" cy="28" r="2.6" fill="#9ff5c8"/> <path d="M98 28l12-12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/> <path d="M110 16l-.6 4.4M110 16l-4.4.6" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/> </g> <rect x="4" y="4" width="120" height="120" rx="26" fill="none" stroke="#7fe7ff" stroke-opacity=".55" stroke-width="1.5"/> <text x="112" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="end">3.0</text> </svg><span>SISTEMA DE RUTAS <b>3.0</b></span></div><div class="sub" id="periodo"></div><div class="fuente" id="fuenteTag"></div><button id="btnGuia" style="width:auto;margin:0;padding:6px 14px;background:#8fcdf5;color:#1E2761;font-weight:700">? Guía de uso</button></header>
+<div id="guia" hidden style="position:fixed;inset:0;background:rgba(7,15,43,.55);z-index:5000;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:30px 12px">
+ <div class="card" style="max-width:760px;width:100%;line-height:1.5;font-size:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">Guía de uso · Sistema de Rutas 3.0</h2><button id="guiaCerrar" class="mini sec" style="font-size:14px">Cerrar ✕</button></div>
+  <p class="note">Sirve para responder tres preguntas: <b>¿la ruta de hoy entra en la jornada?</b>, <b>¿dónde se pierde atención y venta?</b> y <b>¿cuántos vendedores necesito y cómo armo las zonas?</b></p>
+  <h2>Paso a paso</h2>
+  <ol style="padding-left:18px;margin:0">
+   <li><b>Datos.</b> Elegí la fuente: <i>Gescom</i> (cartera de Pehuenia y Comercializadora, con GPS y pedidos) o subí el <b>Excel</b> de cualquier unidad de negocio. Bajá la <i>plantilla</i> para ver las columnas: solo son obligatorias latitud, longitud y vendedor. El Excel se procesa en tu navegador, no se sube a ningún lado.</li>
+   <li><b>Qué analizar.</b> Tildá equipos, zonas y vendedores. Cada cambio recalcula solo. Los botones <i>Pepsico</i> y <i>Peñaflor</i> marcan esas estructuras. También podés sacar o volver a incluir un vendedor haciendo clic en su nombre, abajo del mapa.</li>
+   <li><b>Nivel de servicio.</b> Minutos de atención por canal y por equipo. Cada negocio carga su realidad (exhibidor, góndola, reposición, cobranza…).</li>
+   <li><b>Jornada y movilidad.</b> Horario de calle, días de ruta y cómo se mueve cada equipo (a pie, bici, moto, auto). La movilidad es la palanca que más cambia el resultado.</li>
+   <li><b>Propuesta.</b> Con <i>Vendedores = 0</i> la herramienta busca cuántos hacen falta. Si ponés un número, muestra cómo quedaría con esa cantidad. <i>Calcular</i> actualiza todo y la propuesta se descarga en Excel.</li>
+   <li><b>Escenarios.</b> Poné un nombre, <i>Guardá</i>, cambiá algo (por ejemplo, bici en vez de a pie) y guardá otra vez. Arriba aparece la comparación lado a lado (hasta 4), con la diferencia contra el primero. <i>Aplicar</i> vuelve a un escenario.</li>
+  </ol>
+  <h2>Cómo leer los indicadores</h2>
+  <ul style="padding-left:18px;margin:0">
+   <li><b>Carga:</b> trabajo que pide la ruta contra la jornada. 🟢 hasta 100% · 🟡 hasta 130% · 🔴 más: no entra.</li>
+   <li><b>Jornadas que pide la ruta:</b> cuántos vendedores de jornada completa harían falta para la ruta de hoy.</li>
+   <li><b>Ruta atendida (GPS):</b> de las veces que el cliente estaba en la ruta, cuántas tuvo visita real (parada de 3 min o más) o pedido. Solo en Gescom.</li>
+   <li><b>Pedidos contra antes:</b> pedidos de noviembre contra agosto, antes de la reestructuración. Solo en Gescom.</li>
+   <li><b>Vendedores necesarios:</b> el mínimo para que el promedio del día entre en la jornada y como mucho 1 de cada 5 días se pase.</li>
+  </ul>
+  <h2>El mapa</h2>
+  <ul style="padding-left:18px;margin:0">
+   <li><b>Vendedor de hoy:</b> color y área de cada vendedor. Sirve para ver zonas que se pisan o vendedores que cruzan todo el partido.</li>
+   <li><b>Atención real</b> y <b>Pedidos vs. antes:</b> semáforo por cliente que muestra dónde se cae la ruta y dónde se perdió venta.</li>
+   <li><b>Canal:</b> tipo de comercio. <b>Zonas propuestas:</b> cómo quedarían las zonas balanceadas.</li>
+   <li>Clic en un punto: detalle del cliente. Los puntos grandes son autoservicios y supermercados.</li>
+  </ul>
+  <h2>Tené en cuenta</h2>
+  <ul style="padding-left:18px;margin:0">
+   <li>El traslado se estima con el recorrido más corto entre los clientes del día × 1,3 (por las calles), a la velocidad del equipo.</li>
+   <li>Las zonas propuestas son grupos compactos y parejos en carga. No siguen calles ni avenidas: son el punto de partida para que el supervisor ajuste.</li>
+   <li>Visitas por semana: semanal 1 · doble visita 2 · quincenal ½ · mensual ¼.</li>
+  </ul>
+ </div>
+</div>
 <div class="wrap">
 <aside class="side">
   <div class="card"><h3>1 · Datos</h3>
@@ -61,6 +98,8 @@ h2{font-size:15px;margin:16px 0 6px;color:var(--navy)}
     <div id="presets"></div>
     <div class="note" style="margin:4px 0">Equipos</div><div id="equipos"></div>
     <div class="note" style="margin:8px 0 4px">Zonas</div><div id="zonas"></div>
+    <div class="note" style="margin:8px 0 4px;display:flex;justify-content:space-between;align-items:center">Vendedores <span><button class="mini sec" id="vTodos">Todos</button><button class="mini sec" id="vNinguno">Ninguno</button></span></div>
+    <div id="vendedores" style="max-height:220px;overflow:auto"></div>
   </div>
   <div class="card"><h3>3 · Nivel de servicio (minutos por cliente)</h3>
     <div class="note" style="margin-bottom:6px">Por canal y por equipo: cada negocio carga su realidad (exhibidor, góndola, reposición…).</div>
@@ -255,8 +294,15 @@ function kmeans(items, k, iters = 15) {
 }
 function seleccion() {
   const eqs = [...$('equipos').querySelectorAll('input:checked')].map(i => i.value), zs = [...$('zonas').querySelectorAll('input:checked')].map(i => i.value);
-  return CL.filter(c => eqs.includes(c.equipo) && zs.includes(c.zona));
+  const base = CL.filter(c => eqs.includes(c.equipo) && zs.includes(c.zona));
+  const cnt = {}; base.forEach(c => cnt[c.vendedor] = (cnt[c.vendedor] || 0) + 1);
+  BASEV = Object.keys(cnt).sort((a, b) => parseInt(a) - parseInt(b) || a.localeCompare(b));
+  COLV = Object.fromEntries(BASEV.map((v, i) => [v, PAL[i % PAL.length]]));
+  $('vendedores').innerHTML = BASEV.map(v => `<label class="chk"><input type="checkbox" value="${v}" ${VEXCL.has(v) ? '' : 'checked'}> <i class="dot" style="background:${COLV[v]}"></i>${v} <small style="color:#6b7280">(${cnt[v]})</small></label>`).join('') || '<span class="note">Sin vendedores para esa selección.</span>';
+  return base.filter(c => !VEXCL.has(c.vendedor));
 }
+let BASEV = [], COLV = {}; const VEXCL = new Set();
+function toggleVend(v) { VEXCL.has(v) ? VEXCL.delete(v) : VEXCL.add(v); calcular(); }
 function hull(pts) { // envolvente convexa (cadena monótona)
   const p = pts.map(c => [c.lng, c.lat]).sort((a, b) => a[0] - b[0] || a[1] - b[1]); if (p.length < 3) return p.map(([x, y]) => [y, x]);
   const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]); const lo = [], up = [];
@@ -282,7 +328,7 @@ function colorPed(c) { if (!c.ped_ago) return '#9ca3af'; const r = (c.ped_nov ||
 function setModo(m) { modo = m; document.querySelectorAll('#modos button').forEach(x => x.classList.toggle('on', x.dataset.m === m)); }
 function dibujar() {
   if (!ultimo) return; capa.clearLayers(); const {sel, zonaDe, porV} = ultimo;
-  const vs = Object.keys(porV).sort((a, b) => parseInt(a) - parseInt(b) || a.localeCompare(b)), colV = Object.fromEntries(vs.map((v, i) => [v, PAL[i % PAL.length]]));
+  const vs = Object.keys(porV).sort((a, b) => parseInt(a) - parseInt(b) || a.localeCompare(b)), colV = COLV;
   const cans = [...new Set(sel.map(c => c.canal))].sort(), colC = Object.fromEntries(cans.map((c, i) => [c, PAL[(i * 3) % PAL.length]]));
   // zonas como polígonos (vendedor de hoy o propuesta)
   const grupos = modo === 'hoy' ? vs.map(v => [porV[v], colV[v]]) : modo === 'prop' ? propuesta.map((z, i) => [z, PAL[i % PAL.length]]) : [];
@@ -296,7 +342,7 @@ function dibujar() {
         (c.ped_ago != null ? `<br>Pedidos ${META.antes} → ${META.despues}: ${fmt(c.ped_ago, 1)} → ${fmt(c.ped_nov, 1)}` : '') + (zonaDe.has(c.codigo) ? `<br>Zona propuesta: <b>${zonaDe.get(c.codigo) + 1}</b>` : '')).addTo(capa);
   });
   const it = (col, t) => `<span><i class="dot" style="background:${col}"></i>${t}</span>`;
-  const ley = {hoy: vs.map(v => it(colV[v], v)).join(''), canal: cans.map(c => it(colC[c], c)).join(''),
+  const ley = {hoy: BASEV.map(v => `<span style="cursor:pointer;${VEXCL.has(v) ? 'opacity:.4;text-decoration:line-through' : ''}" title="Clic para incluir o sacar este vendedor" onclick="toggleVend(this.dataset.v)" data-v="${v.replace(/"/g, '&quot;')}"><i class="dot" style="background:${colV[v]}"></i>${v}</span>`).join('') + '<span style="color:#9ca3af">· Clic en un vendedor para sacarlo o incluirlo</span>', canal: cans.map(c => it(colC[c], c)).join(''),
     aten: it('#16a34a', '80% o más de la ruta atendida') + it('#eab308', '50 a 80%') + it('#dc2626', 'menos de 50%') + it('#9ca3af', 'sin datos'),
     ped: it('#16a34a', `mantiene los pedidos de ${META.antes} (90% o más)`) + it('#eab308', '60 a 90%') + it('#dc2626', 'menos de 60%') + it('#9ca3af', `no compraba en ${META.antes}`),
     prop: propuesta.map((z, i) => it(PAL[i % PAL.length], 'Zona ' + (i + 1))).join('')};
@@ -359,7 +405,7 @@ function calcular() {
 let ESC = [];
 function estadoActual() {
   return {fuente: $('fuente').value, eqs: [...$('equipos').querySelectorAll('input:checked')].map(i => i.value), zs: [...$('zonas').querySelectorAll('input:checked')].map(i => i.value),
-    serv: JSON.parse(JSON.stringify(SERV)), velo: {...VELO}, jd: $('jd').value, jh: $('jh').value, dias: $('dias').value, nv: $('nv').value};
+    serv: JSON.parse(JSON.stringify(SERV)), velo: {...VELO}, jd: $('jd').value, jh: $('jh').value, dias: $('dias').value, nv: $('nv').value, vexcl: [...VEXCL]};
 }
 function describir(e) {
   const movs = Object.entries(e.velo).filter(([k]) => e.eqs.includes(k)).map(([k, v]) => `${k}: ${Object.entries(MOV).find(([, x]) => x === v)?.[0] || v + ' km/h'}`).join(', ');
@@ -376,7 +422,7 @@ function aplicarEsc(i) {
   if (e.fuente !== $('fuente').value) { $('fuente').value = e.fuente; iniciarFuente(e.fuente); }
   SERV = JSON.parse(JSON.stringify(e.serv)); VELO = {...e.velo}; armarControles();
   $('equipos').querySelectorAll('input').forEach(x => x.checked = e.eqs.includes(x.value)); $('zonas').querySelectorAll('input').forEach(x => x.checked = e.zs.includes(x.value));
-  $('jd').value = e.jd; $('jh').value = e.jh; $('dias').value = e.dias; $('nv').value = e.nv; calcular();
+  $('jd').value = e.jd; $('jh').value = e.jh; $('dias').value = e.dias; $('nv').value = e.nv; VEXCL.clear(); (e.vexcl || []).forEach(v => VEXCL.add(v)); calcular();
 }
 function renderEsc() {
   $('escCard').hidden = !ESC.length;
@@ -407,7 +453,7 @@ function renderEsc() {
 // ---------- eventos ----------
 function iniciarFuente(f) {
   try {
-    if (f === 'gescom') cargarGescom(); else if (f === 'ejemplo') ejemplo();
+    VEXCL.clear(); if (f === 'gescom') cargarGescom(); else if (f === 'ejemplo') ejemplo();
     armarControles(); calcular(); $('msgDatos').textContent = '';
   } catch (e) { $('msgDatos').innerHTML = '<span style="color:#c62828">' + e.message + '</span>'; }
 }
@@ -429,6 +475,13 @@ $('archivo').onchange = async e => {
 document.querySelectorAll('#modos button').forEach(b => b.onclick = () => { setModo(b.dataset.m); dibujar(); });
 $('calc').onclick = calcular;
 $('escGuardar').onclick = guardarEsc;
+// equipos, zonas y vendedores recalculan solos al tildar/destildar
+$('equipos').onchange = calcular; $('zonas').onchange = calcular;
+$('vendedores').onchange = e => { if (e.target.type === 'checkbox') toggleVend(e.target.value); };
+$('vTodos').onclick = () => { VEXCL.clear(); calcular(); };
+$('vNinguno').onclick = () => { BASEV.forEach(v => VEXCL.add(v)); calcular(); };
+$('btnGuia').onclick = () => $('guia').hidden = false; $('guiaCerrar').onclick = () => $('guia').hidden = true;
+$('guia').onclick = e => { if (e.target.id === 'guia') $('guia').hidden = true; };
 $('csv').onclick = () => {
   if (!ultimo) return; const rows = [['codigo', 'cliente', 'zona', 'localidad', 'segmento', 'canal', 'frecuencia', 'equipo', 'vendedor_hoy', 'zona_propuesta', 'latitud', 'longitud']];
   ultimo.sel.forEach(c => rows.push([c.codigo, c.nombre, c.zona, c.localidad, c.segmento, c.canal, c.doble ? 'Doble' : ({S: 'Semanal', Q: 'Quincenal', M: 'Mensual'})[c.frec], c.equipo, c.vendedor, (ultimo.zonaDe.get(c.codigo) ?? 0) + 1, c.lat, c.lng]));
