@@ -204,7 +204,7 @@ function cargarGescom() {
     frec: c.frec, doble: !!c.doble, vendedor: c.vendedor + ' ' + (V[c.vendedor]?.nombre || ''), equipo: V[c.vendedor]?.equipo || '–', dias: c.dias,
     venta_mes: c.venta_mes, ped_ago: c.ped_ago, ped_nov: c.ped_nov, plan: c.plan, aten: c.aten, vend_ago: c.vend_ago, gps_lat: c.gps_lat, gps_lng: c.gps_lng, gps_n: c.gps_n}));
   META = {periodo: `GPS ${D.periodo.gps} · ${D.periodo.ventas} · datos al ${D.generado}`, antes: 'agosto', despues: 'noviembre',
-    presets: {'Pepsico (Juan + Florencia)': ['Juan', 'Florencia'], 'Peñaflor y multimarca (KAF + Juan)': ['KAF', 'Juan']}, zonaIni: ['Quilmes'], eqIni: ['Juan', 'Florencia']};
+    presets: {'Pepsico (Juan + Florencia)': ['Juan', 'Florencia'], 'Peñaflor y multimarca (KAF + Juan)': ['KAF', 'Juan']}, zonaIni: [], eqIni: []}; // arranca todo destildado: el usuario va marcando
   SERV = {}; VELO = {Juan: 3.9, Florencia: 3.9, KAF: 12.6};
   for (const e of ['Juan', 'Florencia', 'KAF']) SERV[e] = {'Autoservicio': e === 'KAF' ? 16 : 10, 'Kiosco': 5, 'Almacén y otros': 6};
   FUENTE = 'Gescom · Pehuenia y Comercializadora'; fijarCoseno();
@@ -480,7 +480,10 @@ function encuadrar(sel) { // sin los puntos fuera de zona, para que un cliente m
 function calcular() {
   const p = P(), sel0 = seleccion(); GEO = dudosos(sel0);
   const sel = sel0.filter(c => !(GEO.get(c.codigo)?.d >= 50)); // los cargados fuera de la zona no entran en el cálculo
-  if (!sel.length) { $('kpis').innerHTML = '<div class="kpi bad"><b>Sin clientes</b><span>Elegí al menos un equipo y una zona.</span></div>'; capa && capa.clearLayers(); ['tHoy', 'tProp', 'tPerd'].forEach(t => $(t).innerHTML = ''); return; }
+  if (!sel.length) { const nada = !$('equipos').querySelector('input:checked');
+    $('kpis').innerHTML = nada ? '<div class="kpi"><b>Empezá eligiendo</b><span>Tildá un supervisor o equipo en "2 · Qué analizar" (o los botones Pepsico / Peñaflor). Después, si querés, una zona, un día y los vendedores.</span></div>'
+      : '<div class="kpi bad"><b>Sin clientes</b><span>No hay clientes para esa combinación de equipo, zona, día y vendedores.</span></div>';
+    capa && capa.clearLayers(); ['tHoy', 'tProp', 'tPerd', 'tRea', 'tGeo'].forEach(t => $(t).innerHTML = ''); $('leyenda').innerHTML = ''; ultimo = null; return; }
   const porV = {}; sel.forEach(c => (porV[c.vendedor] = porV[c.vendedor] || []).push(c));
   const filasHoy = Object.entries(porV).sort((a, b) => parseInt(a[0]) - parseInt(b[0]) || a[0].localeCompare(b[0])).map(([v, g]) => {
     const ds = minutosDia(g, p, true); const tot = ds.reduce((s, d) => s + d.tot, 0) / ds.length, vis = ds.reduce((s, d) => s + d.vis, 0) / ds.length;
